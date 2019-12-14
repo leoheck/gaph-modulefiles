@@ -1,8 +1,6 @@
 #%Module1.0
-##
-## Balsa Modulefile
-## Leandro Heck
-##
+
+## Created by Marcos
 
 # Local variables
 set MODULE "pulsar"
@@ -20,7 +18,7 @@ prepend-path PATH "${BASE}/scripts"
 
 module load genus/181 innovus/191
 
-# Simple user information
+# User information
 if { [ module-info mode load ] } {
     puts stderr "\n\t${MODULE} module was loaded\n"
 }
@@ -28,4 +26,3 @@ if { [ module-info mode load ] } {
 if { [ module-info mode remove ] } {
     puts stderr "\n\t${MODULE} module was removed\n"
 }
-
