@@ -8,19 +8,15 @@ set VERSION "1.0"
 set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}"
 
 # Helps
-module-whatis "sintese de controladores descritos em burst-mode (BM e XBM)."
-
+module-whatis "Síntese de controladores descritos em burst-mode (BM e XBM)."
 
 # Get the machine name
 set HOST [uname nodename]
 
-# EXECUTA O MATLAB SOMENTE FORA DA KRITI
+# Execute matlab outside of Kriti
 if {[string compare $HOST "kriti"] == 0} {
-
 	puts stderr "\n\tINFO: Currently this tool is not supported on Kriti\n"
-
 } else {
-
 	# Binaries
 	prepend-path PATH "${BASE}"
 
@@ -32,5 +28,4 @@ if {[string compare $HOST "kriti"] == 0} {
 	if { [ module-info mode remove ] } {
 		puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
 	}
-
 }
