@@ -1,14 +1,12 @@
 #%Module1.0
-##
-## Balsa Modulefile
-## Leandro Heck
-##
+
+## Created by Leandro Heck
 
 # Local variables
 set MODULE "balsa"
 set VERSION "4.0"
 
-# Detecta o OS (RHEL, Ubunu ou SUSE)
+# Detect OS version (RHEL, Ubunu ou SUSE)
 set status [catch {exec lsb_release -si} osname]
 switch $osname {
 	"Ubuntu" {
@@ -47,10 +45,10 @@ prepend-path LD_LIBRARY_PATH "${BASE}/deps/extra"
 prepend-path LD_LIBRARY_PATH "${BASE}/usr/lib64"
 prepend-path LD_LIBRARY_PATH "${BASE}/lib"
 
-# Manual (esta faltando nesta versao)
+# Manual (it is missing in this version)
 #prepend-path MANPATH "${BASE}/usr/share/man"
 
-# Simple user information
+# User information
 if { [ module-info mode load ] } {
     puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was loaded\n"
 }
@@ -58,4 +56,3 @@ if { [ module-info mode load ] } {
 if { [ module-info mode remove ] } {
     puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was removed\n"
 }
-
