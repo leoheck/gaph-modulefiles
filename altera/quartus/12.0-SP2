@@ -1,8 +1,6 @@
 #%Module1.0
-##
-## Quartus Modulefile
-## Alexandre Amory  -  Fernando Moraes em 04/julho/2012
-##
+
+## Alexandre Amory - Fernando Moraes em 04/julho/2012
 
 # Local variables
 set COMPANY "altera"
@@ -11,18 +9,25 @@ set VERSION "12.0-SP2"
 set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/${MODULE}"
 set NIOS "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/nios2eds"
 
-# Helps
-module-whatis "Loads Quartus 12.0 synthesis tools for Altera FPGA's (plus Nios2EDS)"
+setenv QUARTUS_64BIT "0"
+setenv MWOS "linux"
+setenv MWARCH "i86"
+setenv QUARTUS_MWWM "allwm"
+setenv QUARTUS_ROOTDIR "${BASE}"
+setenv QUARTUS "${BASE}"
+setenv NIOS2EDS "${NIOS}"
+setenv SOPC_KIT_NIOS2 "${NIOS}"
 
-# Path
+# Helps
+module-whatis "Loads Quartus 12.0 synthesis tools for Altera FPGA's (plus NIOS 2 EDS)"
+
+# PATH
 prepend-path PATH "${BASE}/linux"
 prepend-path PATH "${BASE}/bin"
 prepend-path PATH "${BASE}/sopc_builder/bin"
 prepend-path PATH "${NIOS}/bin"
 prepend-path PATH "${NIOS}/sdk2/bin"
 prepend-path PATH "${NIOS}/bin/gnu/H-i686-pc-linux-gnu/bin"
-#prepend-path PATH "${MODELSIM}/linux"
-#prepend-path PATH "${MODELSIM}/linuxaloem"
 
 # Libraries
 prepend-path LD_LIBRARY_PATH "${BASE}/linux"
@@ -30,24 +35,11 @@ prepend-path LD_LIBRARY_PATH "${BASE}/linux"
 # Manpath
 prepend-path MANPATH "${BASE}/linux/jre/man"
 
-# Simple user information
+# User information
 if { [ module-info mode load ] } {
-    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
 }
 
 if { [ module-info mode remove ] } {
-    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
 }
-
-setenv LC_CTYPE "en_US.utf8"
-setenv LM_LICENSE_FILE 27010@kriti.inf.pucrs.br
-setenv QUARTUS_64BIT "0"
-setenv MWOS "linux"
-setenv MWARCH "i86"
-setenv QUARTUS_MWWM "allwm"
-
-setenv QUARTUS_ROOTDIR "${BASE}"
-setenv QUARTUS "${BASE}"
-setenv NIOS2EDS "${NIOS}"
-setenv SOPC_KIT_NIOS2 "${NIOS}"
-

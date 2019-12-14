@@ -1,6 +1,3 @@
 #%Module1.0
-##
-##  Quartus default version
 
 set ModulesVersion "12.0sp2"
-
