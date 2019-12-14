@@ -1,0 +1,27 @@
+#%Module1.0
+
+# Created by LHeck
+
+## Rogen modulefile
+
+# Local variables
+set MODULE "Rogen"
+set VERSION "v1"
+set BASE "/soft64/sesd/rogen/${VERSION}"
+
+# Helps
+module-whatis "Loads AsCend Rogen"
+
+# Binaries PATH
+prepend-path PATH "${BASE}/"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

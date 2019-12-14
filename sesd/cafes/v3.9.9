@@ -1,0 +1,32 @@
+#%Module1.0
+
+## CAFES modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "CAFES"
+set VERSION "v3.9.9"
+set BASE "/soft64/sesd/cafes/${VERSION}"
+
+# Helps
+module-whatis "Loads CAFES task mapper for Hermes-based MPSoCs. Type 'cafes' to run it."
+
+# Required Variables
+setenv CAFES_HOME "${BASE}"
+
+# Binaries PATH
+prepend-path PATH "${BASE}/bin"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    # Required Modules
+    module load java
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    # Required Modules
+    module remove java
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

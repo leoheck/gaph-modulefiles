@@ -1,0 +1,35 @@
+#%Module1.0
+
+# Criado por Leandro Heck
+
+# Local variables
+set MODULE "XCELIUM"
+set VERSION "183"
+set BASE "/soft64/cadence/ferramentas/${MODULE}${VERSION}"
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICcd ENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# BINARIES
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools/bin"
+
+# LIBRARIES
+prepend-path LD_LIBRARY_PATH "$BASE/tools/lib"
+
+# VARS
+setenv ALTOSHOME "$BASE/"
+
+# Helps
+module-whatis "Successor of Incisive"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

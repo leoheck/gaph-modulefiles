@@ -1,0 +1,49 @@
+#%Module1.0
+
+set MODULE "modelsim"
+set VERSION "10.3c"
+set BASE "/soft64/mentor/ferramentas/${MODULE}/${VERSION}/modeltech"
+
+# Licensa
+prepend-path LM_LICENSE_FILE "27005@kriti.inf.pucrs.br"
+prepend-path MGLS_LICENSE_FILE "27005@kriti.inf.pucrs.br"
+
+# Modelsim Variables
+setenv MODELSIM_HOME "${BASE}"
+setenv MTI_BYPASS_SC_PLATFORM_CHECK 1
+setenv MTI_VCO_MODE "64"
+setenv MTI_HOME $BASE
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "${BASE}/linux_x86_64"
+
+# [LHECK] Resolve problema das fontes em OSs modernos
+# Exemplo Debian 9.1 do Sergio
+# Tem que adicionar uma flag melhor aqui
+if { [ exec hostname ] == "darkstar2" } {
+	prepend-path LD_LIBRARY_PATH "/soft64/modulefiles/mentor/freetype"
+}
+
+if { [ exec uname -r  ] == "4.9.0-5-amd64" } {
+        puts stderr "\tDEBIAN  OS"
+	prepend-path LD_LIBRARY_PATH "/soft64/modulefiles/mentor/freetype"
+}
+
+if { [ exec lsb_release -i ] == "Distributor ID:	Debian" } {
+	prepend-path LD_LIBRARY_PATH "/soft64/modulefiles/mentor/freetype"
+}
+
+# About
+module-whatis "Ferramenta de simulação HDL da Mentor. Commando ferramenta vsim."
+
+if { [ module-info mode load ] } {
+        puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+        puts stderr "\tpara testar a instalacao"
+        puts stderr "\t/soft64/admin/scripts/check-install-modelsim.sh\n"
+}
+
+if { [ module-info mode remove ] } {
+        puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

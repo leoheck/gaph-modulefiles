@@ -1,0 +1,29 @@
+#%Module1.0#####################################################################
+
+# ARM NONE EABI COMPILER
+# Leandro Heck
+
+# Local variables
+set MODULE "arm-none-eabi"
+set VERSION "9-2019-q4-major"
+set BASE "/soft64/util/$MODULE/gcc-$VERSION"
+
+# Helps
+module-whatis "C tools compiler for the ARM architecture"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Manpath
+prepend-path PATH "${BASE}/share/doc/gcc-${MODULE}/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\tARM compiler"
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

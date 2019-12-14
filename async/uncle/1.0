@@ -1,0 +1,33 @@
+#%Module1.0#####################################################################
+##
+## Balsa Modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "uncle"
+
+set BASE "/soft64/async/ferramentas/uncle"
+
+# Helps
+module-whatis "Balsa is an asynchronous circuit synthesis system"
+
+# Balsa required variables
+setenv UNCLE "${BASE}"
+
+# Binaries
+prepend-path PATH "${BASE}/mapping/tools/bin:${BASE}/mapping/tools/x86_64/bin"
+
+
+# Manual (esta faltando nesta versao)
+#prepend-path MANPATH "${BASE}/usr/share/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} module was removed\n"
+}
+

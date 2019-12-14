@@ -1,0 +1,27 @@
+#%Module1.0 
+
+## Leandro Heck
+
+# Local variables
+set MODULE "Cheddar"
+set VERSION "2.1"
+set BASE "/soft64/util/cheddar/${VERSION}"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+# Helps
+module-whatis "Ferramenta para avaliar politicas de escalonamento"
+
+# User feedback
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

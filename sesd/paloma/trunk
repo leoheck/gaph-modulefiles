@@ -1,0 +1,30 @@
+#%Module1.0
+
+## PALOMA modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "PALOMA"
+set VERSION "trunk"
+set BASE "/soft64/sesd/paloma/${VERSION}"
+
+# Helps
+module-whatis "Loads PALOMA software"
+
+# Required Variables
+setenv PALOMA_HOME "${BASE}"
+
+# Binaries PATH
+prepend-path PATH "${BASE}/bin"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+    module load java
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

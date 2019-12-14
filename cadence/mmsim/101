@@ -1,0 +1,45 @@
+#%Module1.0
+
+# Local variables
+set MODULE "MMSIM"
+set VERSION "10.1"
+set TOOL "MMSIM101"
+set BASE "/soft64/cadence/ferramentas/${TOOL}"
+
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/$TOOL"
+
+# REQUIRED VARIABLES
+setenv CDS_MMSIM_DIR $BASE
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Binaries
+prepend-path PATH "$IUSHOME/bin"
+prepend-path PATH "$IUSHOME/tools/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib"
+
+# WORKAROUND: This is a missing library to work with Ubuntu
+prepend-path LD_LIBRARY_PATH "/soft64/admin/lib"
+
+# Configura ferramentas para 64bits por padrao
+setenv CDS_AUTO_64BIT ALL
+
+# Helps
+module-whatis "SPICE Simulations (Analog, RF and Mix-signal). Integrated with Virtuoso provides transistor-level 
+analysis. Commands: spectre, spectremdl..."
+
+# Simple user information
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

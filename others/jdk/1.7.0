@@ -1,0 +1,28 @@
+#%Module1.0#####################################################################
+
+## java modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "JDK"
+set VERSION "1.7.0"
+set BASE "/soft64/util/jdk/${VERSION}"
+
+# Helps
+module-whatis "Loads Java JDK"
+
+# Libraries
+prepend-path PATH "$BASE/bin"
+
+# Home
+setenv JAVA_HOME "$BASE"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

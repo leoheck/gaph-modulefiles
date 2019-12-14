@@ -1,0 +1,6 @@
+#%Module1.0
+##
+##  ET default version
+
+set ModulesVersion "101"
+

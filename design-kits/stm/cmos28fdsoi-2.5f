@@ -1,0 +1,52 @@
+#%Module1.0
+
+# Criado por Leandro Heck
+# Teste para carregamento de ferramentas do design kit
+
+# Local variables
+set MODULE "Design Kit"
+set COMPANY "stm"
+set VERSION "28nm-cmos28fdsoi_25f"
+set BASE "/soft64/design-kits/${COMPANY}/${VERSION}"
+
+# Helps
+module-whatis "Design Kit STM 28 nm"
+
+# Required Variables
+setenv CMOS28FDSOI_DIR "${BASE}"
+setenv PDKITROOT "${BASE}/PDK_STM_cmos28FDSOI_AMS_6U1x_2U2x_2T8x_LB/2.5.f-02"
+setenv PM_PLATFORM ix86-linux
+
+set required_tools "
+\tREQUIRED TOOLS:
+\t==================================
+\tCadence IC       : 06.16.060
+\tCDS / MMSIM      : 13.10.186
+\tMGC/Calibre      : 2014.3_16.15
+\tCDS / PVS        : 14.10.005
+\tCDS / EXT / QRC  : 13.20.255
+\tMGC/AMS/Eldo     : 13.2a
+\tStar-RCXT        : h-2013.06-sp3
+\tHspice           : j-2014.09
+\tads for Momentum : 2012.08
+\tgoldengate       : 4.8.3"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${required_tools}\n"
+	module load ic/6.1.6
+	module load adms/15.3
+	module load calibre/2015.1
+	module load mmsim/131
+	module load starrc/J-2014.12-SP3-3
+	module load hspice/J-2014.09-1
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+
+	puts stderr "\n\tCopy folder bellow as a project startup (then use in csh)"
+	puts stderr "\t${BASE}/install/setup_working_dir/\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

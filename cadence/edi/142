@@ -1,0 +1,36 @@
+# Removido temporairamente porque o rc deve ter mudado de nome (falta o comando rc)
+#####%Module1.0
+
+# Created by Leandro Heck (leoheck@gmail.com)
+
+# Local variables
+set MODULE "EDI"
+set VERSION "142"
+set BASE "/soft64/cadence/ferramentas/EDI${VERSION}"
+
+# Required variables
+setenv CDS_AUTO_64BIT ALL
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}
+setenv CDS_LIC_FILE ${LM_LICENSE_FILE}
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$BASE/tools/lib"
+
+# Helps
+module-whatis "Encounter Digital Implementation System. RTL Compiler (rc)"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

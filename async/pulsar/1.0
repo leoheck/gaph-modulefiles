@@ -1,0 +1,31 @@
+#%Module1.0#####################################################################
+##
+## Balsa Modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "pulsar"
+
+set BASE "/soft64/async/ferramentas/pulsar-1.0"
+
+# Helps
+module-whatis "Pulsar is an asynchronous circuit synthesis system"
+
+setenv PULSAR_HOME "${BASE}"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+# Binaries
+prepend-path PATH "${BASE}/scripts"
+
+module load genus/181 innovus/191
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} module was removed\n"
+}
+

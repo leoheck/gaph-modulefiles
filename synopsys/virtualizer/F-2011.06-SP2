@@ -1,0 +1,44 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "virtualizer"
+set VERSION "F-2011.06-SP2"
+set BASE "/soft64/synopsys/ferramentas/${MODULE}/${VERSION}"
+
+# License CHANGED by Alexandre Amory
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+setenv SNPS_VP_HOME ${BASE}/SLS/linux
+setenv COWAREHOME ${BASE}/SLS/linux
+
+#prepend-path PATH "$BASE/SLS/linux/tools/bin"
+
+# Helps
+module-whatis "Synopsys Platform Architect, Synopsys Virtualizer, and the Synopsys TLM Library.\nType 'vpa' to start Virtualizer, 'scide' for Eclipse SystemC IDE, 'vpexplorer', and 'cwrdoc' for 
+docs."
+
+# falta licença
+# nao temos licença do Plataform Creator (pct)
+
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+        #system source $env(SNPS_VP_HOME)/setup.sh -vauth
+        #system source $env(COWAREHOME)/setup-impl/setup-impl.sh
+        puts stderr "\n\tFIRST: choose the simulator you want to use by typing:"
+        puts stderr "\t\t  - module load modelsim"
+        puts stderr "\t\t  - module load incisive"
+        puts stderr "\tSECOND: select one of the following tools:"
+        puts stderr "\t\t  - Platform Architect MCO. Type 'source $env(SNPS_VP_HOME)/setup.sh -pa' to load this tool"
+        puts stderr "\t\t  - Virtualizer. Type 'source $env(SNPS_VP_HOME)/setup.sh  -vauth' to load this tool"
+        puts stderr "\t\t  - Virtualizer Development Kit. Type 'source $env(SNPS_VP_HOME)/setup.sh -vsdk' to load this tool"
+        puts stderr "\t\t  - Virtualizer Development Kit +. Type 'source $env(SNPS_VP_HOME)/setup.sh -vhdk' to load this tool"
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

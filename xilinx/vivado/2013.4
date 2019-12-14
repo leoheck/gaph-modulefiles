@@ -1,0 +1,52 @@
+#%Module1.0
+
+# Created by Leandro Sehnem Heck
+
+set COMPANY "xilinx"
+set MODULE "Vivado"
+set VERSION "2013.4"
+set BASE_PATH "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/Vivado/2013.4"
+
+# Detect system architeture
+if { [ exec uname -p ] == "x86_64" } {
+	set ARCH "lin64"
+	set GNUARCH "lin64"
+} else {
+	set ARCH "lin"
+	set GNUARCH "lin32"
+}
+
+# License
+setenv XILINXD_LICENSE_FILE 2100@kriti.inf.pucrs.br
+
+# Xilinx variables
+setenv XILINX_VIVADO = ${BASE_PATH}
+
+# Binaries PATH
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/bin/${ARCH}"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/bin"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/gnu/microblaze/lin/bin"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/gnu/powerpc-eabi/lin/bin"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/gnu/arm/lin/bin"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/gnu/microblaze/linux_toolchain/${GNUARCH}_be/bin"
+prepend-path PATH "${BASE_PATH}/../../SDK/2013.4/gnu/microblaze/linux_toolchain/${GNUARCH}_le/bin"
+prepend-path PATH "${BASE_PATH}/../../Vivado_HLS/2013.4/bin"
+prepend-path PATH "${BASE_PATH}/bin"
+prepend-path PATH "${BASE_PATH}/.xinstall/bin/${ARCH}"
+
+# Libraries PATH
+prepend-path LD_LIBRARY_PATH = "${BASE_PATH}/ids_lite/ISE/lib2/${ARCH}"
+
+# Help
+module-whatis "Ferramentas para desenvolvimento HDL em FPGAs da Xilinx."
+
+# Simple user information on module load
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Simple user information on module remove
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

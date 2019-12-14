@@ -1,0 +1,48 @@
+#%Module1.0
+
+# Local variables
+set MODULE "GENUS"
+set VERSION "18.1"
+set TOOL "GENUS181"
+set BASE "/soft64/cadence/ferramentas/${TOOL}"
+
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/$TOOL"
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}
+setenv CDS_LIC_FILE ${LM_LICENSE_FILE}
+
+# Binaries
+prepend-path PATH "$IUSHOME/bin"
+prepend-path PATH "$IUSHOME/tools/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib"
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools.lnx86/lib/64bit/"
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib/64bit/"
+
+# Extra environment variables
+setenv CDS_AUTO_64BIT ALL
+
+# Helps
+module-whatis "Genus (successor of RTL Compiler). Command: genus"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded"
+
+	puts stderr "\n\tTool manuals:  cdnshelp"
+	puts stderr "\tTool errors:  genus@root:> vls -a <ERROR_CODE>"
+
+	puts stderr "\n\tTOOL COMPATIBILITY\n"
+	puts stderr "\t  - Conformal       CONFRML15.1-p100 "
+	puts stderr "\t  - Encounter Test  ET15.10          "
+	puts stderr "\t  - INNOVUS         INNOVUS15.10-p002"
+	puts stderr "\t  - NCsim           13.20-p002       \n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

@@ -1,0 +1,24 @@
+#%Module1.0
+
+# Created by Leandro Heck
+
+# Local variables
+set MODULE "3D"
+set VERSION "3.13"
+set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis "Síntese de controladores descritos em burst-mode (BM e XBM)"
+
+# Binaries
+prepend-path PATH "${BASE}/3D-src"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

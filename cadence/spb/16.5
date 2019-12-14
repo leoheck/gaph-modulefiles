@@ -1,0 +1,33 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "SPB"
+set VERSION "16.5"
+set BASE "/soft64/cadence/ferramentas/SPB165"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+set TOOL "SPB165"
+set CDS_DIR "/soft64/cadence/ferramentas/$TOOL"
+
+prepend-path PATH "$CDS_DIR/bin:$CDS_DIR/tools/bin"
+prepend-path LD_LIBRARY_PATH "$CDS_DIR/tools/lib"
+
+# Helps
+module-whatis "Allegro (OrCAD) PCB Designer. Run 'projmgr' to start the app. Verificar se temos as lics necessárias para usar a ferramenta."
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

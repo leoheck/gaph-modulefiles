@@ -1,0 +1,37 @@
+#%Module1.0#####################################################################
+##
+## Alexandre Amory
+##
+
+# Local variables
+set MODULE "SGE"
+set VERSION "6.2u7"
+set BASE "/grid"
+
+# Helps
+module-whatis "Sun Grid Engine (SGE)"
+
+setenv SGE_ROOT "${BASE}"
+setenv SGE_CELL "default"
+setenv SGE_CLUSTER_NAME "p6444"
+setenv SGE_QMASTER_PORT 6444
+setenv SGE_EXECD_PORT 6445
+
+# Binaries
+prepend-path PATH "${BASE}/bin/lx24-amd64"
+
+# Libraries
+#prepend-path LD_LIBRARY_PATH "${BASE}/lib-linux64"
+
+# Manuals
+prepend-path MANPATH "${BASE}/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

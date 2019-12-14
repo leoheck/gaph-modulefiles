@@ -1,0 +1,9 @@
+#%Module1.0
+
+# O environment modules nao ordena as versoes numericamente
+# Entao, no modulo do astram, devemos SEMPRE deixar como default
+# a versao mais recente. Se não, versoes mais antigas *desatyualizadas*
+# serao usadas no lugar!
+
+set ModulesVersion "3.10"
+

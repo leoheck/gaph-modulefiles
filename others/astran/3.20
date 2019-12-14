@@ -1,0 +1,46 @@
+#%Module1.0
+## Modulefile template
+
+# Leandro Sehnem Heck
+# Duas versoes do astran (uma compilada no ubuntu@gaphl12 e uma no centos@kriti)
+
+# Local variables
+set MODULE "astran"
+set VERSION "3.20"
+
+set status [catch {exec lsb_release -si} osname]
+switch $osname {
+	"Ubuntu" {
+		set OS "ubuntu"
+	}
+	"CentOS" {
+		set OS "centos"
+	}
+	default {
+		puts "Unknown OS, using Ubuntu version!"
+		set OS "ubuntu"
+	}
+}
+
+set BASE "/soft64/util/${MODULE}/${VERSION}/${OS}"
+
+# Required Variables
+setenv LC_ALL "C"
+setenv ASTRAN_PATH "$BASE"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "Astran GME UFRGS. Ferramenta para geracao automatica de layout de standard cells."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	module load gurobi
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	module rm gurobi
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

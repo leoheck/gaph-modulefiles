@@ -1,0 +1,35 @@
+#%Module1.0
+
+## Created by Leandro Heck (leoheck@gmail.com)
+
+# Local variables
+set MODULE "CONFORMAL"
+set VERSION "152"
+set BASE "/soft64/cadence/ferramentas/CONFORMAL${VERSION}"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools.lnx86/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$BASE/tools.lnx86/lib"
+prepend-path LD_LIBRARY_PATH "/soft64/cadence/libutil"
+
+# Help
+module-whatis "Ferramenta de verificação utilizada para fazer equivalence checking. Por exemplo, verifica se o RTL é equivalente a netlist."
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

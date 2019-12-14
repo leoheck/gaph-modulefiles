@@ -1,0 +1,32 @@
+#%Module1.0#####################################################################
+##
+## Petrify modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "petrify"
+set VERSION "5.0"
+set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis "Synthesize Petri nets and asynchronous controllers"
+
+# Path
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+prepend-path LIBRARY_PATH ${BASE}/lib
+
+# Manpath
+prepend-path MANPATH "${BASE}/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

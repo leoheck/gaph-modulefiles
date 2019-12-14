@@ -1,0 +1,35 @@
+#%Module1.0
+
+## Leandro Heck (leoheck@gmail.com)
+
+# Local variables
+set MODULE "Modus"
+set VERSION "16.10"
+set BASE "/soft64/cadence/ferramentas/MODUS161"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/MODUS161"
+
+# Tools
+prepend-path PATH "$IUSHOME/bin"
+prepend-path PATH "$IUSHOME/tools/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib"
+
+# Helps
+module-whatis "Cadence test tool ET sucessor"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

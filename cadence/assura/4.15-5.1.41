@@ -1,0 +1,43 @@
+#%Module1.0
+
+# Local variables
+set MODULE "ASSURA"
+set VERSION "415/5141"
+set BASE "/soft64/cadence/ferramentas/${MODULE}${VERSION}"
+
+# REQUIRED VARIABLES
+
+setenv CDS_ASSURA "${BASE}" 
+setenv ASSURAHOME "${BASE}"
+
+#the following line might be completely redundant
+setenv SUBSTRATESTORMHOME "${BASE}"
+setenv CDS_ASSURA_DIR "${BASE}"
+setenv ASSURA_AUTO_64BIT ALL
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "${BASE}/tools/bin"
+
+# Libraries
+#prepend-path LD_LIBRARY_PATH "${BASE}/tools/lib"
+
+# WORKAROUND: This is a missing library to work with Ubuntu
+#prepend-path LD_LIBRARY_PATH "/soft64/admin/lib"
+
+# Helps
+module-whatis "Assura DRC, LVS and Parasitic Extraction tool."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

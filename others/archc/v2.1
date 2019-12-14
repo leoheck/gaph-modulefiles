@@ -1,0 +1,42 @@
+#%Module1.0#####################################################################
+##
+## ARCHC modulefile
+## Alexandre Amory
+##
+
+# Local variables
+set MODULE "ARCHC"
+set VERSION "2.1"
+set BASE "/soft64/archc/archc-${VERSION}"
+
+# Helps
+module-whatis    "Loads ARCHC framework for architectural modeling. Type 'acsim' to run it."
+
+#path
+prepend-path PATH "${BASE}/bin"
+
+# Home
+setenv ARCHC_HOME "${BASE}"
+setenv ARCHC_PATH "${BASE}"
+
+#setenv TARGET_ARCH "linux"
+prepend-path C_INCLUDE_PATH "${BASE}/include" 
+prepend-path CPLUS_INCLUDE_PATH "${BASE}/include" 
+prepend-path LIBRARY_PATH "${BASE}/lib"
+
+module load systemc/2.2.0 systemc/TLM.1.0
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+
+
+# comandos de compilacao do archc
+# ./configure --prefix=/soft64/archc/archc-2.1 --with-systemc=/soft64/systemc/2.2.0/ --with-tlm=/soft64/systemc/TLM-1.0/tlm
+# make
+# make install

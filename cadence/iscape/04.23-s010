@@ -1,0 +1,54 @@
+#%Module1.0
+
+# By Leandro Sehnem Heck <leoheck@gmail.com>
+
+# Local variables
+set COMPANY "cadence"
+set MODULE "iscape"
+set VERSION "04.23-s010"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/iscape.${VERSION}"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "Synopsys Installer"
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+
+
+	#set INFOTEXT "\tA Hotfix contains patches to a Base or Update Release, and is applied to an installed hierarchy. Hotfixes are cumulative and contain the latest"
+	#set status [catch {exec echo $INFOTEXT | fmt -c -w 75} formated_text]
+	#puts stderr $formated_text
+
+	puts stderr "\t#> To install Cadence tools execute: iscape.sh\n\n"
+	
+	puts stderr "\tCADENCE PACKAGE TYPE INFORMATION\n"
+
+	puts stderr "\tBASE (MUST INSTALL IT FIRST)"
+	set INFOTEXT "\t    A Base Release is a complete set of software products for a Release. It requires a new file from Cadence to use the products in it.\n"
+	set status [catch {exec echo $INFOTEXT | fmt -c -w 75} formated_text]
+	puts stderr $formated_text
+
+	puts stderr "\tUPDATE (Apply it over the BASE and update module name)"
+	set INFOTEXT "\t    An Update is a fully tested enhancement to a Base Release. An Update can be incremental a complete replacement of a Base Release.\n"
+	set status [catch {exec echo $INFOTEXT | fmt -c -w 75} formated_text]
+	puts stderr $formated_text
+
+	puts stderr "\tHOTFIX (Apply it over the BASE and update module name)"
+	set INFOTEXT "\t    A Hotfix contains patches to a Base or Update Release, \
+	and is applied to an installed hierarchy. Hotfixes are cumulative and \
+	contain the latest set of all previous Hotfixes. Hotfixes are incremental \
+	and require a Base to perform the installation if the Hotfix is downloaded or \
+	install from dvd-r media. These are installed on top of a Base or Update."
+	set status [catch {exec echo $INFOTEXT | fmt -c -w 75} formated_text]
+	puts stderr $formated_text
+
+	puts stderr "\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}

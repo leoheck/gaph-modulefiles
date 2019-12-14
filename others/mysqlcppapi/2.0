@@ -1,0 +1,34 @@
+#%Module1.0#####################################################################
+
+## SystemC modulefile
+## Leandro Heck
+
+# Local variables
+set MODULE "MYSQL CPP Api"
+set VERSION "2.0"
+set BASE "/soft64/util/mysqlcppapi/${VERSION}"
+
+# Helps
+module-whatis "Loads ${MODULE} ${VERSION}"
+
+# Includes
+prepend-path C_INCLUDE_PATH "${BASE}/include/mysqlcppapi-2.0/" 
+prepend-path CPLUS_INCLUDE_PATH "${BASE}/include/mysqlcppapi-2.0/" 
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+prepend-path LIBRARY_PATH "${BASE}/lib"
+
+# Custom variables 
+prepend-path MYSQLCPPAPI_LIB "${BASE}/lib/libmysqlcppapi-2.0.so"
+prepend-path MYSQLCPPAPI_INC_PATH "${BASE}/include/mysqlcppapi-2.0"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

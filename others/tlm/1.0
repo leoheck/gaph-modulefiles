@@ -1,0 +1,32 @@
+#%Module1.0#####################################################################
+##
+## SystemC-TLM modulefile
+## Alexandre Amory
+##
+
+# Local variables
+set MODULE "SystemC"
+set VERSION "TLM-1.0"
+set BASE "/soft64/util/accelera/systemc/${VERSION}"
+
+# Helps
+module-whatis    "Loads SystemC - TLM from Open SystemC Initiative (OSCI)"
+
+# Includes
+prepend-path C_INCLUDE_PATH "${BASE}/tlm" 
+prepend-path CPLUS_INCLUDE_PATH "${BASE}/tlm" 
+
+# Home
+setenv TLM_HOME "${BASE}"
+setenv TLM_PATH "${BASE}"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

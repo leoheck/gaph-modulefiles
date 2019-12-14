@@ -1,0 +1,26 @@
+#%Module1.0#####################################################################
+
+# Local variables
+set MODULE "tessent"
+set VERSION "2012.2"
+set BASE "/soft64/mentor/ferramentas/${MODULE}/${VERSION}"
+
+# Licence
+setenv MGLS_LICENSE_FILE 27005@kriti.inf.pucrs.br
+
+# Help 
+module-whatis "Mentor's test tools for scan, boundary scan, jtag, lbist, mbist, atpg, etc. The most relevant tools are dftadvisor (scan insertion), flextest(atpg), fastscan(atpg), testkompress, 
+lbistarchitect, mbistarchitect, bsdarchitect, diagnosis, tessent, yieldassist, among others"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+setenv TESSENT_HOME "${BASE}"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

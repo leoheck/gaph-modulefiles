@@ -1,0 +1,31 @@
+#%Module1.0
+
+## Leandro Heck
+
+# Local variables
+set MODULE "MIPS SDE"
+set VERSION "6.06.01"
+set BASE "/soft64/ovp/32bits/Imperas.20130315/lib/Linux32/CrossCompiler/mips-elf"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+#prepend-path LD_LIBRARY_PATH ""
+
+# Manuals
+#preprend-path MANPATH ""
+
+# Info
+module-whatis "C cross compiler for the MIPS architecture"
+
+#  On module load
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# On module remove
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

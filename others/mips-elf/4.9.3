@@ -1,0 +1,30 @@
+#%Module1.0#####################################################################
+
+# MIPS CROSS COMPILER
+# Leandro Heck
+
+# Local variables
+set MODULE "mips-elf"
+set VERSION "4.9.3"
+set BASE "/soft64/util/$MODULE/gcc-$VERSION"
+
+# Helps
+module-whatis "C cross compiler for the MIPS architecture (Compatible with HellFire and SSoC, maybe HeMPS)"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "/soft64/util/hf-risc/sim/hf_risc_sim"
+
+# Manpath
+prepend-path PATH "${BASE}/share/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\tMIPS compiler for HF-RISC"
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

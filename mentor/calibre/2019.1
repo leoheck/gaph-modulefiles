@@ -1,0 +1,27 @@
+#%Module1.0#####################################################################
+
+# Local variables
+set MODULE "calibre"
+set VERSION "2019.1"
+set BASE "/soft64/mentor/ferramentas/${MODULE}/${VERSION}/aoi_cal_2019.1_52.37"
+
+# Licence
+setenv MGLS_LICENSE_FILE 27005@kriti.inf.pucrs.br
+
+# Required variables
+setenv CALIBRE_HOME "${BASE}"
+setenv MGC_HOME "${BASE}"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Help 
+module-whatis "Matheus/Julian. Descrever o que essa ferramenta faz. Execute 'XXX' para iniciar o uso"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

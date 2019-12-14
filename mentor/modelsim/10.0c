@@ -1,0 +1,44 @@
+#%Module1.0#####################################################################
+
+# Local variables
+set MODULE "modelsim"
+set VERSION "10.0c"
+set BASE "/soft64/mentor/ferramentas/${MODULE}/${VERSION}/modeltech"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+
+# Help 
+module-whatis "Ferramenta de simulação HDL da Mentor com unisim. Execute 'vsim' para iniciar o uso"
+
+#Sua função é ignorar a verificação de compatibilidade de SystemC com o Linux nas ferramentas Mentor.
+#Anteriormente, necessita-se inserir um arquivo "/etc/redhat-release" que "mentia" que o sistema operacional era o RedHat. 
+#O SuSE fica completamente maluco quando uso o "/etc/redhat-release". Assim, descobri esta solução que me parece ser mais interessante.
+
+setenv MTI_BYPASS_SC_PLATFORM_CHECK 1
+
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "${BASE}/linux_x86_64"
+prepend-path LD_LIBRARY_PATH "${BASE}/linux_x86_64"
+
+setenv MODELSIM_HOME "${BASE}"
+
+#MACHINE_TYPE=`uname -m`
+#if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+#    export PATH=$PATH:$MODELSIM_HOME/linux_x86_64:$MENTOR_ICFLOW/bin:$CALIBRE_HOME/bin
+#else
+#    export PATH=$PATH:$MODELSIM_HOME/linux:$MENTOR_ICFLOW/bin:$CALIBRE_HOME/bin
+#fi
+
+# Licensa CHANGED by Leandro Heck
+#setenv MGLS_LICENSE_FILE 27005@kriti.inf.pucrs.br
+setenv MGLS_LICENSE_FILE 27005@kriti.inf.pucrs.br

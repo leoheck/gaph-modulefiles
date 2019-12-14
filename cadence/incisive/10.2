@@ -1,0 +1,48 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "INCISIVE"
+set VERSION "10.2"
+set BASE "/soft64/cadence/ferramentas/INCISIV102"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+#####################################
+# set ncsim simulation environment
+# run 'ncsc_env_check' to check if
+# the installation is ok
+#####################################
+
+set TOOL "INCISIV102"
+
+# FIX: This is required to run iccr (code coverage)
+setenv CURRENT_HOST_ADDR "localhost.localdomain" 
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/$TOOL"
+
+setenv CDS_INST_DIR "$BASE"
+
+prepend-path PATH "$IUSHOME/bin:$IUSHOME/tools/bin:$IUSHOME/tools/systemc/gcc/bin"
+#prepend-path PATH $IUSHOME/tools/bin/64bit
+
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib:$IUSHOME/tools/systemc/gcc/install/lib"
+#prepend-path LD_LIBRARY_PATH $IUSHOME/tools/lib/64bit:$LD_LIBRARY_PATH
+
+# Helps
+module-whatis "Incisive, ferramenta de verificação funcional. Possui o simulador ncsim, suporte à SystemC/SCV, cobertura de código (iccr), irun, nclauchn, cdnshelp, etc."
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

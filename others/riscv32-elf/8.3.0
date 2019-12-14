@@ -1,0 +1,32 @@
+#%Module1.0#####################################################################
+
+# RISC-V CROSS-COMPILER
+# Module created by Leandro Heck (9/2019)
+# This toolchain should be compiled at KRITI to be able to run everywhere
+
+# Local variables
+set MODULE "riscv-elf"
+set VERSION "8.3.0"
+set BASE "/soft64/util/$MODULE/gcc-$VERSION"
+
+# Helps
+module-whatis "C cross compiler for the RISCV32I architecture (Compatible with HF-RISC)"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Extra tools
+prepend-path PATH "/soft64/util/hf-risc/sim/hf_riscv_sim"
+
+# Manpath
+prepend-path MANPATH "${BASE}/share/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\tRISCV32I compiler for HF-RISC"
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

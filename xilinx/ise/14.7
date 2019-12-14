@@ -1,0 +1,69 @@
+#%Module1.0#####################################################################
+##
+
+# Local variables
+set COMPANY "xilinx"
+set MODULE "ISE" 
+set VERSION "14.7"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/ISE_DS"
+
+# Procedure to detect system architeture
+if { [ exec arch ] == "x86_64" } {
+	set ARCH "lin64"
+} else {
+	set ARCH "lin"
+}
+
+# Necessário para LABORG (moraes)
+setenv QT_PLUGIN_PATH  " "
+
+# License
+setenv XILINXD_LICENSE_FILE 2100@kriti.inf.pucrs.br
+
+# Help
+module-whatis "Ferramentas para síntese em FPGAs da Xilinx. Possui ferramentas como ise, planAhead, edk, chipscope e impact."
+
+# ISE Design Tools
+set XILINX ${BASE}/ISE
+setenv XILINX ${XILINX}
+prepend-path PATH "${XILINX}/bin/${ARCH}"
+prepend-path PATH "${BASE}/EDK/gnu/microblaze/${ARCH}/bin/"
+#prepend-path LD_LIBRARY_PATH "${XILINX}/lib/${ARCH}"
+
+# PlanAhead Analysis Tool
+set XILINX_PLANAHEAD ${BASE}/PlanAhead
+setenv XILINX_PLANAHEAD ${XILINX_PLANAHEAD}
+prepend-path PATH "${XILINX_PLANAHEAD}/bin"
+
+# Embedded Development Kit (EDK)
+set XILINX_EDK ${BASE}/EDK
+setenv XILINX_EDK ${XILINX_EDK}
+prepend-path PATH "${XILINX_EDK}/bin/${ARCH}"
+#prepend-path LD_LIBRARY_PATH "${XILINX_EDK}/lib/${ARCH}"
+
+# ChipScope PRO
+#set CHIPSCOPE "${BASE}/ChipScope"
+#setenv CHIPSCOPE "${CHIPSCOPE}"
+#prepend-path PATH "${CHIPSCOPE}/bin/${ARCH}"
+#prepend-path LD_LIBRARY_PATH "${CHIPSCOPE}/xilinx/lib/${ARCH}"
+#prepend-path LD_LIBRARY_PATH "${CHIPSCOPE}/lib/${ARCH}"
+
+# DSP Tools (System Generator, AccelDSP)
+#set XILINX_DSP "${BASE}/DSP_Tools"
+#setenv XILINX_DSP "${XILINX_DSP}"
+#prepend-path PATH "${XILINX_DSP}/${ARCH}/common/bin"
+#prepend-path LD_LIBRARY_PATH "${XILINX_DSP}/sysgen/lib"
+
+# Extra variables
+setenv TEMP "/tmp"
+setenv TMP "/tmp"
+
+# Simple user information on module load
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Simple user information on module remove
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

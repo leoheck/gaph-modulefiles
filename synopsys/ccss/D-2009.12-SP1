@@ -1,0 +1,33 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "ccss"
+set VERSION "D-2009.12-SP1"
+set BASE "/soft64/synopsys/ferramentas/${MODULE}/${VERSION}"
+
+# License 
+setenv CCSS_KEYS 27000@kriti.inf.pucrs.br
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+setenv SYNOPSYS_CCSS "$BASE/linux/ccss"
+setenv CCSS_SIM_DIR "$env(HOME)/ccss/sim"
+
+prepend-path PATH "$env(SYNOPSYS_CCSS)/bin"
+
+system source $env(SYNOPSYS_CCSS)/../gnupackages/source_me.sh
+
+# Helps
+module-whatis "CoCentric System Studio. Type 'ccss'."
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

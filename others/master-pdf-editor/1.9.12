@@ -1,0 +1,24 @@
+#%Module1.0 
+
+## Leandro Heck
+
+# Local variables
+set MODULE "Master PDF Editor"
+set VERSION "1.9.12"
+set BASE "/soft64/util/master-pdf-editor/${VERSION}"
+
+# Binaries
+prepend-path PATH "${BASE}"
+
+# Helps
+module-whatis "Ferramenta para editar PDFs"
+
+# User feedback
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

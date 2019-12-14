@@ -1,0 +1,46 @@
+#%Module1.0
+
+# Created by Leandro Heck (leoheck@gmail.com)
+
+# Local variables
+set MODULE "INCISIVE"
+set VERSION "152"
+set BASE "/soft64/cadence/ferramentas/INCISIVE${VERSION}"
+
+# License
+set LICENSE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "${LICENSE}"
+setenv CDS_LIC_FILE "${LICENSE}"
+
+# Required variables
+setenv CDS_DIR "${BASE}"
+setenv CDS_INST_DIR "${BASE}"
+setenv INCA_64BIT 1
+setenv CDS_AUTO_64BIT ALL
+
+# FIX: This is required to run iccr (code coverage)
+setenv CURRENT_HOST_ADDR "localhost.localdomain"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools/bin"
+prepend-path PATH "$BASE/tools/bin/64bit"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$BASE/tools/lib"
+
+
+# Helps
+module-whatis "Incisive, ferramenta de verificação funcion."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded"
+
+	puts stderr "\n\tTo test environment"
+	puts stderr "\t/soft64/admin/scripts/check-install-incisive.sh\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

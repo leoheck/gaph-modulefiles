@@ -1,0 +1,39 @@
+#%Module1.0
+
+## Hemps-GLP Generator modulefile
+## Leandro Heck
+
+# Local variables
+set MODULE "hemps-glp"
+set VERSION "4.1"
+set BASE "/soft64/sesd/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis "Hemps-GLP is a MPSoC with GALS Low-power feature. To run call hemps-generator"
+
+# Required Variables
+setenv HEMPS_PATH "${BASE}"
+
+# Binaries PATH
+prepend-path PATH "${BASE}/bin"
+
+# Load feedback 
+if { [ module-info mode load ] } {
+    # Required modules
+    module load systemc
+    module load ise
+    module load modelsim
+    module load mips
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    # Required modules
+    module load systemc
+    module load ise
+    module load modelsim
+    module load mips
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

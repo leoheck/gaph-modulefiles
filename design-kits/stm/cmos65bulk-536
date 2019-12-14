@@ -1,0 +1,39 @@
+#%Module1.0
+
+# Criado por Leandro Heck
+
+# Local variables
+set MODULE "Design Kit"
+set COMPANY "stm"
+set VERSION "65nm-cmos065_536"
+set BASE "/soft64/design-kits/${COMPANY}/${VERSION}"
+
+# Helps
+module-whatis "STMicroeletronics design kit 65nm"
+
+# Required environment variables
+setenv PM_PLATFORM ix86-linux
+setenv CMOS065_DIR ${BASE}
+setenv CDS_INST_DIR ${BASE}/UNIOPUS/uniopus/ferramentas_ams11.1_mmsim
+setenv UNICAD_KERNEL_ROOT ${BASE}/UnicadKernel@3.5
+setenv UK_PATH ${BASE}/UnicadKernel@3.5
+
+# Environment variables
+setenv UNICAD_KERNEL_ROOT "${BASE}/UnicadKernel@3.5/"
+setenv UNIDOCROOT "${BASE}/Unidoc_2.7.c-GAPH"
+setenv FRONTENDKITROOT "${BASE}/FrontEndKit@3.2.1"
+
+# Binarios
+prepend-path PATH "${BASE}/UnicadKernel@3.5/bin"
+prepend-path PATH "${BASE}/Unidoc_2.7.c-GAPH/bin"
+prepend-path PATH "${BASE}/FrontEndKit@3.2.1/bin"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

@@ -1,0 +1,28 @@
+#%Module1.0
+
+## Indexador de arquivos de documentacao (dos design kits) 
+## Leandro Heck
+
+# Local variables
+set MODULE  "dkdocs"
+set VERSION "1.0"
+set BASE "/soft64/util/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis "Loads a tool to index design-kit documentation. To run call dkdocs"
+
+# Path
+prepend-path PATH "${BASE}/bin"
+
+# Environment varaible
+setenv DK_PATH "$BASE"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

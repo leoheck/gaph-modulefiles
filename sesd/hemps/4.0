@@ -1,0 +1,39 @@
+#%Module1.0
+
+## Hemps Generator
+## Leandro Heck
+
+# Local variables
+set MODULE "hemps"
+set VERSION "4.0"
+set BASE "/soft64/sesd/hemps/${VERSION}"
+
+# Helps
+module-whatis "Loads Hemps Editor module. To run call hemps-generator"
+
+# Required Variables
+setenv HEMPS_PATH "${BASE}"
+
+# Binaries PATH
+prepend-path PATH "${BASE}/bin"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    # Required modules
+    module load systemc
+    module load ise
+    module load modelsim
+    module load mips-elf/4.1.1-hemps
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    # Required modules
+    module load systemc
+    module load ise
+    module load modelsim
+    module load mips-elf/4.1.1-hemps
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

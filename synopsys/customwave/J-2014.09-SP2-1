@@ -1,0 +1,30 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "customwave"
+set VERSION "J-2014.09-SP2-1"
+set BASE "/soft64/synopsys/ferramentas/${MODULE}/${VERSION}"
+
+# License 
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+# Binaries 
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "Custom Wave View. Command 'wv'"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded"
+	puts stderr "\n\tPARA USAR NO UBUNTU: Arurme a referencia para o libmng.so.1"
+	puts stderr "\tsudo ln -s /usr/lib/x86_64-linux-gnu/libmng.so.2 /usr/lib/x86_64-linux-gnu/libmng.so.1\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

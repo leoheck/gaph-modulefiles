@@ -1,0 +1,40 @@
+#%Module1.0#####################################################################
+##
+## MIPS for ARCHC modulefile
+## Alexandre Amory
+##
+
+# Local variables
+set MODULE "MIPS-ARCHC"
+set VERSION "3.3.1"
+set BASE "/l/archc/compilers/mips"
+
+# Helps
+module-whatis    "Loads MIPS for ARCHC framework for architectural modeling. Type 'mips-elf-gcc' to run it."
+
+#path
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "/soft64/archc/models/mips1-v0.7.8/"
+prepend-path C_INCLUDE_PATH "${BASE}/include"
+prepend-path CPLUS_INCLUDE_PATH "${BASE}/include"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+module load archc/v2.1
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+
+# comandos para compilar o modelo mips
+# cd /soft64/archc/models/mips1-v0.7.8/
+# acsim  mips1.ac -abi
+# make -f Makefile.archc 
+# gerou o arquivo mips1.x
+# rodando uma aplicacao no modelo: /soft64/archc/models/mips1-v0.7.8/mips1.x --load=/soft64/archc/benchmarks/mibench/automotive/basicmath/bin/basicmath_small
+# compilando o momobench: cd /soft64/archc/benchmarks/momobench; mips-elf-gcc -o momo -specs=archc momo.c 
+# executando momobench: ../../models/mips1-v0.7.8/mips1.x --load=momo

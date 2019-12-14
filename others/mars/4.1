@@ -1,0 +1,29 @@
+#%Module1.0
+
+## CAFES modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "MARS"
+set VERSION "4.1"
+set BASE "/soft64/util/mars/${VERSION}"
+
+# Helps
+module-whatis "Loads MARS"
+
+# Binaries PATH
+prepend-path PATH "${BASE}"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    # Required Modules
+    module load java
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    # Required Modules
+    module remove java
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

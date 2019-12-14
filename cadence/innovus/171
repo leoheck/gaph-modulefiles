@@ -1,0 +1,48 @@
+#%Module1.0
+# Module created by Leandro Heck
+
+# Local variables
+set MODULE "INNOVUS"
+set VERSION "17.1"
+set TOOL "INNOVUS171"
+set BASE "/soft64/cadence/ferramentas/${TOOL}"
+
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/$TOOL"
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+prepend-path LM_LICENSE_FILE ${LM_LICENSE_FILE}
+prepend-path CDS_LIC_FILE ${LM_LICENSE_FILE}
+
+# Binaries
+prepend-path PATH "$IUSHOME/bin"
+prepend-path PATH "$IUSHOME/tools/bin"
+
+# Libraries
+if { [ exec lsb_release -i -s ] == "Ubuntu" } {
+	setenv OA_UNSUPPORTED_PLAT linux_rhel50_gcc48x
+	prepend-path LD_LIBRARY_PATH "$IUSHOME/oa/lib/linux_rhel50_gcc48x_64/opt"
+}
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib/64bit/"
+
+# Extra environment variables
+setenv CDS_AUTO_64BIT ALL
+setenv OA_HOME "$IUSHOME/share/oa"
+
+# Helps
+module-whatis "Innovus (successor of Encounter Digital Implementation System)."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded"
+	puts stderr "\n\tTool manuals: cdnshelp"
+	puts stderr "\n\tTOOL COMPATIBILITY\n"
+	puts stderr "\t  - RTL Compiler (rc)        14.10-s012"
+	puts stderr "\t  - Quantus(TM)  (qrc)       15.1.2-s269"
+	puts stderr "\t  - Virtuoso(R)  (virtuoso)  34.14-p001\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

@@ -1,0 +1,41 @@
+#%Module1.0#####################################################################
+##
+## Balsa Modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "balsa"
+set VERSION "3.5.1"
+set ARCH "x32"
+set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}/${ARCH}"
+
+# Helps
+module-whatis "Balsa is an asynchronous circuit synthesis system"
+
+# Balsa required variables
+setenv BALSAHOME "${BASE}"
+
+# Path
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+#prepend-path LD_LIBRARY_PATH "/usr/lib64"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib/graphviz"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib/gtkwave"
+prepend-path LD_LIBRARY_PATH "${BASE}/deps/lib"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+
+# Manual
+prepend-path MANPATH "${BASE}/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was removed\n"
+}
+

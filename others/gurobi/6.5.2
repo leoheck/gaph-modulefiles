@@ -1,0 +1,34 @@
+#%Module1.0
+## Modulefile template
+
+# Local variables
+set MODULE "gurobi"
+set VERSION "6.5.2"
+set BASE "/soft64/util/${MODULE}/${VERSION}"
+
+# Required variables
+setenv GUROBI_HOME "${BASE}"
+setenv LPSolver "${BASE}/bin/gurobi_cl"
+setenv lpsolver "${BASE}/bin/gurobi_cl"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+
+# License
+setenv TOKENSERVER kriti.inf.pucrs.br
+setenv GRB_LICENSE_FILE /soft64/license/lics/lic_gurobi
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+# Helps
+module-whatis "Gurobi Optimization. Ferramenta para resolver LP QP QCP MILP MIQP e MIQCP."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

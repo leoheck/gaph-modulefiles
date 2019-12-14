@@ -1,0 +1,28 @@
+#%Module1.0#####################################################################
+
+# MIPS CROSS COMPILER
+# Leandro Heck
+
+# Local variables
+set MODULE "mips-elf"
+set VERSION "4.6.1"
+set BASE "/soft64/util/$MODULE/gcc-$VERSION"
+
+# Helps
+module-whatis "C cross compiler for the MIPS architecture"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+
+# Manpath
+prepend-path PATH "${BASE}/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

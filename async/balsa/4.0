@@ -1,0 +1,61 @@
+#%Module1.0#####################################################################
+##
+## Balsa Modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "balsa"
+set VERSION "4.0"
+
+# Detecta o OS (RHEL, Ubunu ou SUSE)
+set status [catch {exec lsb_release -si} osname]
+switch $osname {
+	"Ubuntu" {
+		set ARCH "ubuntu-x64"
+
+	}
+	"RedHatEnterpriseClient" {
+		set ARCH "rhel-x64"
+
+	}
+	"SUSE LINUX" {
+		puts "Suse OS. Loading Ubuntu version!"
+		set ARCH "ubuntu-x64"
+	}
+	default {
+		puts "Unknown OS. Loading Ubuntu version!"
+		set ARCH "ubuntu-x64"
+	}
+}
+
+set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}/${ARCH}"
+
+# Helps
+module-whatis "Balsa is an asynchronous circuit synthesis system"
+
+# Balsa required variables
+setenv BALSAHOME "${BASE}"
+
+# Binaries
+prepend-path PATH "${BASE}/usr/bin"
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "${BASE}/deps"
+prepend-path LD_LIBRARY_PATH "${BASE}/deps/extra"
+prepend-path LD_LIBRARY_PATH "${BASE}/usr/lib64"
+prepend-path LD_LIBRARY_PATH "${BASE}/lib"
+
+# Manual (esta faltando nesta versao)
+#prepend-path MANPATH "${BASE}/usr/share/man"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} ${ARCH} module was removed\n"
+}
+

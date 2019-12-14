@@ -1,0 +1,24 @@
+#%Module1.0
+
+## MIPS CROSS COMPILER
+
+# Local variables
+set MODULE "ut"
+set VERSION "4.2"
+set BASE "/soft64/util/ut"
+
+# Helps
+module-whatis "Tool for test GPUs. Execute: ut"
+
+# Path
+prepend-path PATH "${BASE}"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

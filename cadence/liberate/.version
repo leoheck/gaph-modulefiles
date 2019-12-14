@@ -1,0 +1,7 @@
+#%Module1.0
+##
+##  Liberate default version
+
+set ModulesVersion "181"
+
+

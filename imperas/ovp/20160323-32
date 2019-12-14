@@ -1,0 +1,52 @@
+#%Module1.0
+# Created by MADALOZZO
+
+# Local variables
+set MODULE "OVP Simulator"
+set VERSION "20160323"
+set RUNTIME "CpuManager"
+set BASE "/soft64/imperas/ferramentas/32bits/Imperas.20160323"
+set ARCH "Linux32"
+
+# Licence
+prepend-path LM_LICENSE_FILE 2700@kriti.inf.pucrs.br
+setenv IMPERASD_LICENSE_FILE 2700@kriti.inf.pucrs.br
+
+# Imperas environment
+setenv IMPERAS_HOME "${BASE}"
+setenv IMPERAS_ARCH "${ARCH}"
+setenv IMPERAS_UNAME "Linux"
+setenv IMPERAS_VLNV "${BASE}/lib/${ARCH}/ImperasLib"
+setenv IMPERAS_RUNTIME "${RUNTIME}"
+setenv IMPERAS_BACKTRACE 1
+setenv IMPERAS_SHRSUF "so"
+
+# Cross compiler variables
+#setenv MIPS_TOOLCHAIN_ROOT "$BASE/lib/$ARCH/CrossCompiler/cs-mips-elf"
+setenv  ARM_TOOLCHAIN_ROOT "$BASE/lib/$ARCH/CrossCompiler/arm-elf"
+
+# Binaries
+prepend-path PATH "$BASE/bin/$ARCH"
+prepend-path PATH "$BASE/lib/$ARCH/CrossCompiler/arm-elf/bin"
+prepend-path PATH "$BASE/lib/$ARCH/gdb"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$BASE/bin/$ARCH"
+prepend-path LD_LIBRARY_PATH "$BASE/lib/$ARCH/External/lib"
+
+# Module info 
+module-whatis "Ferramenta de simulação de processadores OVP - 32 bits"
+
+# User feedback on module load
+if { [ module-info mode load ] } {
+	module load systemc/2.3.1
+	puts stderr "\t${MODULE} ${VERSION} (using ${RUNTIME}) module was loaded - 32bits version\n"
+	puts stderr "\t#> PARA COMPLETAR EXECUTE:\n"
+	puts stderr "\tsource $BASE/bin/setup.sh" 
+	puts stderr "\tsetupImperas -m32 $BASE\n"
+}
+
+# User feedback on module remove
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

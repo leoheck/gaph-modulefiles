@@ -1,0 +1,33 @@
+#%Module1.0#
+
+# By Leandro Heck
+
+# Local variables
+set COMPANY "mentor"
+set MODULE "adms"
+set VERSION "15.3"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}"
+
+# License
+setenv MGLS_LICENSE_FILE 27005@kriti.inf.pucrs.br
+
+# REQUIRED variables
+setenv MGC_AMS_HOME "$BASE"
+setenv mgc_ams "$BASE"
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "${BASE}/modeltech/bin"
+
+# Help 
+module-whatis "Run 'Analog tools. Run systest all' to test the tool"
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

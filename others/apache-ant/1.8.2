@@ -1,0 +1,28 @@
+#%Module1.0#####################################################################
+
+## java modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "Apache ANT"
+set VERSION "1.8.2"
+set BASE "/soft64/util/apache-ant/1.8.2"
+
+# Helps
+module-whatis "Loads Apache ANT"
+
+# Libraries
+prepend-path PATH "${BASE}/bin"
+
+# Home
+setenv ANT_HOME "$BASE"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

@@ -1,0 +1,28 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "processor_designer"
+set VERSION "F-2011.06-SP3"
+set BASE "/soft64/synopsys/ferramentas/${MODULE}/${VERSION}"
+
+# License CHANGED by Alexandre Amory
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+prepend-path PATH "$BASE/PD/linux/bin"
+
+# Helps
+module-whatis "The Processor Designer is an automated embedded-processor design and optimization environment. It is based on the LISA processor description language, used to create an abstract model 
+of the target processor. Type 'ldesigner' to start"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

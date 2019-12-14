@@ -1,0 +1,40 @@
+#%Module1.0#####################################################################
+##
+
+# Local variables
+set COMPANY "xilinx"
+set MODULE "digilent"
+set VERSION "adept-2.1"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}"
+
+# Procedure to detect system architeture
+if { [ exec uname -p ] == "x86_64" } {
+	set ARCH "lin64"
+} else {
+	set ARCH "lin"
+}
+
+# License
+#setenv XILINXD_LICENSE_FILE 2100@kriti.inf.pucrs.br
+
+# Help
+module-whatis "Ferramentas de donwload para FPGAS da Digilent. Possui o comando djtgcfg, usado para fazer download de bitstream por linha de comando. Por exemplo, $> djtgcfg prog -f <design>.bit -d Nexys2 -i 0"
+
+# ISE Design Tools
+prepend-path PATH "${BASE}/bin"
+#prepend-path LD_LIBRARY_PATH "${BASE}/digilent.adept.runtime_2.10.2-x86_64/lib64"
+
+
+# Extra variables
+#setenv TEMP "/tmp"
+#setenv TMP "/tmp"
+
+# Simple user information on module load
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Simple user information on module remove
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

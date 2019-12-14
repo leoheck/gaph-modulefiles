@@ -1,0 +1,46 @@
+#%Module1.0#####################################################################
+##
+## Matlab modulefile
+##
+
+# Local variables
+set MODULE "Matlab"
+set VERSION "R2014a"
+set BASE "/soft64/util/mathworks/matlab/R2014a"
+
+# Helps
+module-whatis "Loads $MODULE $VERSION"
+
+# Get the machine name
+set HOST [uname nodename]
+
+# EXECUTA O MATLAB SOMENTE FORA DA KRITI
+if {[string compare $HOST "kriti"] == 0} {
+
+	puts stderr "\n\tINFO: ${MODULE} ${VERSION} must no be used @kriti due to memory problems\n"
+
+} else {
+
+  # Path
+  prepend-path PATH "${BASE}/bin"
+  setenv MATLAB "${BASE}"
+
+  # Includes
+  prepend-path C_INCLUDE_PATH "${BASE}/extern/include"
+  prepend-path CPLUS_INCLUDE_PATH "${BASE}/extern/include"
+
+  # Libraries
+  #prepend-path LIBRARY_PATH "${BASE}/extern/lib"
+  prepend-path LD_LIBRARY_PATH "${BASE}/bin/glnxa64:${BASE}/sys/os/glnxa64:${BASE}/extern/lib/glnxa64/"
+
+  # Simple user information
+
+  if { [ module-info mode load ] } {
+     puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+  }
+
+  if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+  }
+
+}

@@ -1,0 +1,29 @@
+#%Module1.0
+
+## NoCAddress
+## Leandro Heck
+
+# Local variables
+set MODULE "nocaddress"
+set VERSION "1.1"
+set BASE "/soft64/sesd/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis "Loads NoCAddress Converter. To run call nocaddress"
+
+# Binaires PATH
+prepend-path PATH "${BASE}/bin"
+
+# Manula PATH
+prepend-path MANPATH "${BASE}/share/man"
+
+# Load feedback
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feedback
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

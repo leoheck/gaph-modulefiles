@@ -1,0 +1,33 @@
+#%Module1.0
+
+set MODULE "questa"
+set VERSION "10.6e"
+set BASE "/soft64/mentor/ferramentas/${MODULE}/${VERSION}/questasim"
+
+# Licensa
+prepend-path LM_LICENSE_FILE "27005@kriti.inf.pucrs.br"
+prepend-path MGLS_LICENSE_FILE "27005@kriti.inf.pucrs.br"
+
+# Modelsim Variables
+setenv MODELSIM_HOME "${BASE}"
+setenv MTI_BYPASS_SC_PLATFORM_CHECK 1
+setenv MTI_VCO_MODE "64"
+setenv MTI_HOME $BASE
+
+# Binaries
+prepend-path PATH "${BASE}/bin"
+prepend-path PATH "${BASE}/linux_x86_64"
+
+# About
+module-whatis "Ferramenta de simulação HDL da Mentor. Commando ferramenta vsim."
+
+if { [ module-info mode load ] } {
+        puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+#        puts stderr "\tPara testar a instalacao"
+#        puts stderr "\t/soft64/admin/scripts/check-install-modelsim.sh\n"
+}
+
+if { [ module-info mode remove ] } {
+        puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

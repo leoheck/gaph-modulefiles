@@ -1,0 +1,32 @@
+#%Module1.0
+
+# By Leandro Sehnem Heck <leoheck@gmail.com>
+
+# Local variables
+set COMPANY "synopsys"
+set MODULE "installer"
+set VERSION "3.2"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}"
+
+# License
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+prepend-path PATH "$BASE"
+
+# Helps
+module-whatis "Synopsys Installer"
+
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+
+	puts stderr "\tINSTALLATION"
+	puts stderr "\tTo install in batch mode enter following installer command:\n"
+	puts stderr "\tinstaller -batch_installer -source <SOURCE> -target <DEST>\n"
+	puts stderr "\t<SOURCE> : directory that contains  temporary (*.spf) product files"
+	puts stderr "\t<DEST>   : /soft64/synopsys/ferramentas/\n"
+
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}

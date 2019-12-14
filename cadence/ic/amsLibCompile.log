@@ -1,0 +1,2 @@
+Error: Cannot find 'tools' directory.
+	Please invoke amsLibCompile from the directory where 'tools' resides.

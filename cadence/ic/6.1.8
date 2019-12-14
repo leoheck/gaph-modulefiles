@@ -1,0 +1,51 @@
+#%Module1.0
+
+# By Leandro Sehnem Heck
+
+# Local variables
+set COMPANY "Cadence"
+set MODULE "IC"
+set VERSION "618"
+set BASE "/soft64/cadence/ferramentas/IC${VERSION}"
+
+# Commonly Used Environment Variables in PDKs and in other tools
+setenv CDS_INST_DIR "$BASE"
+setenv CDSDIR $BASE
+setenv CDS_HOME "$BASE"
+setenv CDSHOME $BASE
+setenv CDS "$BASE"
+
+# Configura ferramentas para 64	bits por padrao
+setenv CDS_AUTO_64BIT ALL
+
+# Forca a plataforma para o OpenAccess
+# Solucao para Ubuntu.
+# O Suse e o RHEL identificam a mesma plataforma
+setenv OA_UNSUPPORTED_PLAT "linux_rhel50_gcc44x"
+
+# License
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools/bin"
+prepend-path PATH "$BASE/tools.lnx86/dfII/bin"
+prepend-path PATH "$BASE/share/oa/bin/"
+
+# Libraries
+#prepend-path LD_LIBRARY_PATH "$BASE/tools/lib/64bit"
+
+# Helps
+module-whatis "Virtuoso Front to Back Design Environment."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}
+

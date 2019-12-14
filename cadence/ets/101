@@ -1,0 +1,38 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "ETS"
+set VERSION "10.1"
+set BASE "/soft64/cadence/ferramentas/ETS10.1"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+set TOOL "ETS101"
+
+set CDS_DIR "/soft64/cadence/ferramentas"
+set IUSHOME "$CDS_DIR/$TOOL"
+
+prepend-path PATH "$IUSHOME/bin:$IUSHOME/tools/bin"
+prepend-path LD_LIBRARY_PATH "$IUSHOME/tools/lib"
+
+# ets nao funciona sem usar a opcao -64
+set-alias ets "ets -64"
+
+# Helps
+module-whatis "Matheus, decrever o que eh essa ferramenta e onde ela é usada."
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

@@ -1,0 +1,29 @@
+#%Module1.0
+
+# By Leandro Sehnem Heck <leoheck@gmail.com>
+
+# Local variables
+set COMPANY "synopsys"
+set MODULE "hspice"
+set VERSION "J-2014.09-1"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/${MODULE}/${VERSION}/hspice"
+
+# Required Variables
+setenv HSP_HOME $BASE
+
+# License
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+# Binaries
+prepend-path PATH "$BASE/bin:/soft64/synopsys/ferramentas/CosmosScope2017/ai_bin"
+
+# Helps
+module-whatis "Synopsys hspice tool is an advanced SPICE simulator"
+
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}

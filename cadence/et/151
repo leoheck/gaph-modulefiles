@@ -1,0 +1,34 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "ET"
+set VERSION "151"
+set BASE "/soft64/cadence/ferramentas/ET${VERSION}"
+
+# License 
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+prepend-path PATH "$BASE/tools/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "$BASE/tools/lib"
+
+# Helps
+module-whatis "Encounter Test and Verification" 
+
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

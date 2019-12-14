@@ -1,0 +1,27 @@
+#%Module1.0
+
+## Modulefile template
+
+# Local variables
+set MODULE "Tetramax"
+set VERSION "G-2012.06-SP2"
+set BASE "/soft64/synopsys/ferramentas/${MODULE}/${VERSION}"
+
+# License 
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "Synopsys Tetramax ATPG"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

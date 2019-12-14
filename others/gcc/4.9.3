@@ -1,0 +1,42 @@
+#%Module1.0#####################################################################
+##
+## SystemC modulefile
+## Leandro Heck
+##
+
+# Local variables
+set COMPANY "GNU"
+set MODULE "gcc"
+set VERSION "4.9.3"
+set BASE "/soft64/util/${MODULE}/${VERSION}"
+#/soft64/util/gcc/4.9.3/x86_64-linux-gnu
+
+# Helps
+#module-whatis "Loads GCC 4.9.3 (supports c++14)"
+
+# Binaries
+prepend-path PATH "${BASE}/x86_64-linux-gnu/bin/"
+
+# Includes
+#prepend-path C_INCLUDE_PATH "${BASE}/include"
+#prepend-path CPLUS_INCLUDE_PATH "${BASE}/include"
+prepend-path C_INCLUDE_PATH /soft64/util/gcc/4.9.3/lib/gcc/x86_64-linux-gnu/4.9.3/include
+prepend-path CPLUS_INCLUDE_PATH /soft64/util/gcc/4.9.3/lib/gcc/x86_64-linux-gnu/4.9.3/include
+
+# Libraries
+prepend-path LIBRARY_PATH "${BASE}/x86_64-linux-gnu/lib/"
+prepend-path LD_LIBRARY_PATH "${BASE}/x86_64-linux-gnu/lib/"
+
+# MANUAL
+prepend-path MANPATH "/soft64/util/gcc/4.9.3/share/man"
+
+# Simple user information
+
+if { [ module-info mode load ] } {
+    puts stderr "\n\t ${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t ${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}
+

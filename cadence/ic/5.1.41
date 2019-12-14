@@ -1,0 +1,48 @@
+#%Module1.0
+
+# Local variables
+set MODULE "IC"
+set VERSION "5141 USR5"
+set BASE "/soft64/cadence/ferramentas/IC5141"
+
+# LICENSE
+set LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv LM_LICENSE_FILE "5280@kriti.inf.pucrs.br"
+setenv CDS_LIC_FILE "${LM_LICENSE_FILE}"
+
+# Commonly Used Environment Variables in PDKs and in other tools
+setenv CDS_INST_DIR "$BASE"
+setenv CDSDIR $BASE
+setenv CDS_HOME "$BASE"
+setenv CDSHOME $BASE
+setenv CDS "$BASE"
+
+setenv EUREKA_PATH $BASE/tools
+setenv CDS_VHD $BASE/tools/leapfrog
+#setenv CDS_LAYER_POOL_SIZE 10000
+#setenv CDS_NUM_USER_COLOR 16
+
+# BINARIES
+prepend-path PATH "$BASE/tools/dfII/bin"
+prepend-path PATH "$BASE/tools/bin"
+prepend-path PATH "$BASE/bin"
+
+# LIBRARIES
+prepend-path LD_LIBRARY_PATH "$BASE/tools/lib"
+prepend-path LD_LIBRARY_PATH "$BASE/tools.lnx86/lib/"
+
+# MANUALS
+prepend-path MANPATH $BASE/share/man
+
+# Helps
+module-whatis "Virtuoso Front to Back Design Environment. Compativel com DKs mais antigos"
+
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

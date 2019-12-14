@@ -1,0 +1,30 @@
+#%Module1.0
+
+# By Leandro Sehnem Heck <leoheck@gmail.com>
+
+# Local variables
+set COMPANY "synopsys"
+set MODULE "starrc"
+set VERSION "J-2014.12-SP3-3"
+set BASE "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}"
+
+# Required Variables
+setenv RCXT_HOME_DIR $BASE
+setenv SYNOPSYS $BASE
+
+# License
+setenv SNPSLMD_LICENSE_FILE 27000@kriti.inf.pucrs.br
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "Synopsys hspice tool is an advanced SPICE simulator"
+
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${COMPANY} ${MODULE} ${VERSION} module was removed\n"
+}

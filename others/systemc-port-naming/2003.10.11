@@ -1,0 +1,26 @@
+#%Module1.0#####################################################################
+##
+## SystemC modulefile
+## Leandro Heck
+##
+
+# Local variables
+set MODULE "SystemC Port Naming"
+set VERSION "2003.10.11"
+set BASE "/soft64/util/doulos/port-naming/2003.10.11"
+
+# Helps
+module-whatis "Loads SystemC port naming from Doulos"
+
+# Includes
+prepend-path PATH "${BASE}" 
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

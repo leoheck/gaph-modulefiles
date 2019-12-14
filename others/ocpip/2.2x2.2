@@ -1,0 +1,26 @@
+#%Module1.0#####################################################################
+
+## SystemC-TLM modulefile
+## Leandro Heck
+
+# Local variables
+set MODULE "OCPIP"
+set VERSION "2.2x2.2"
+set BASE "/soft64/util/accelera/systemc/ocpip-${VERSION}"
+
+# Helps
+module-whatis "Loads OCPIP for SystemC"
+
+# Includes
+prepend-path C_INCLUDE_PATH "${BASE}/include" 
+prepend-path CPLUS_INCLUDE_PATH "${BASE}/include" 
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

@@ -1,0 +1,44 @@
+#%Module1.0
+
+# Created by Leandro Heck
+
+set COMPANY "xilinx"
+set MODULE "Vivado"
+set VERSION "2016.2"
+set BASE_PATH "/soft64/${COMPANY}/ferramentas/${MODULE}/${VERSION}/${MODULE}/${VERSION}"
+
+# Detect system architeture
+if { [ exec uname -p ] == "x86_64" } {
+	set ARCH "lin64"
+	set GNUARCH "lin64"
+} else {
+	set ARCH "lin"
+	set GNUARCH "lin32"
+}
+
+# License
+setenv XILINXD_LICENSE_FILE 2100@kriti.inf.pucrs.br
+
+# Xilinx variables
+setenv XILINX_VIVADO ${BASE_PATH}
+
+# Binaries PATH
+prepend-path PATH "${BASE_PATH}/bin/"
+prepend-path PATH "${BASE_PATH}/../../Vivado_HLS/${VERSION}/bin/"
+
+# Libraries PATH
+prepend-path LD_LIBRARY_PATH "${BASE_PATH}/lib/lnx64.o"
+
+# Help
+module-whatis "Ferramentas para desenvolvimento HDL em FPGAs da Xilinx."
+
+# Simple user information on module load
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Simple user information on module remove
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

@@ -1,0 +1,22 @@
+#%Module1.0
+## Modulefile template
+
+# Local variables
+set MODULE "abc"
+set VERSION "1.01"
+set BASE "/soft64/util/${MODULE}/${VERSION}"
+
+# Binaries
+prepend-path PATH "$BASE/bin"
+
+# Helps
+module-whatis "ABC - Ferramenta de sintese de Berkeley."
+
+# Simple user information
+if { [ module-info mode load ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}

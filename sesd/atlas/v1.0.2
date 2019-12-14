@@ -1,0 +1,36 @@
+#%Module1.0
+
+## ATLAS modulefile
+## Alexandre Amory
+
+# Local variables
+set MODULE "ATLAS"
+set VERSION "v1.0.2"
+set BASE "/soft64/sesd/atlas/${VERSION}"
+
+# Helps
+module-whatis "Loads ATLAS framework for NoC designs. Type 'atlas' to run it."
+
+# Required Variables
+setenv ATLAS_HOME "${BASE}"
+setenv GNUPLOT_HOME "/usr/bin"
+
+# Binaries PATH
+prepend-path PATH "${BASE}"
+
+# Load feadback
+if { [ module-info mode load ] } {
+    # Required Modules
+#    module load java
+    module load modelsim
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+# Remove feadback
+if { [ module-info mode remove ] } {
+    # Required Modules
+    module remove java
+    module remove modelsim
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

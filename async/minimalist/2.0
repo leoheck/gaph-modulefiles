@@ -1,0 +1,28 @@
+#%Module1.0
+
+# Created by Leandro Heck
+
+# Local variables
+set MODULE "Minimalist"
+set VERSION "2.0"
+set BASE "/soft64/async/ferramentas/${MODULE}/${VERSION}"
+
+# Helps
+module-whatis " íntese de controladores descritos em burst-mode (BM apenas, não XBM)."
+
+# Binaries
+prepend-path PATH "${BASE}/Linux-X86/bin"
+prepend-path PATH "${BASE}/bin"
+
+# Libraries
+prepend-path LD_LIBRARY_PATH "${BASE}/Linux-X86/lib"
+
+# Simple user information
+if { [ module-info mode load ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
+}
+

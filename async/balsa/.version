@@ -1,0 +1,6 @@
+#%Module1.0
+##
+##  INCISIVE default version
+
+set ModulesVersion "4.0"
+
