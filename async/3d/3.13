@@ -13,7 +13,7 @@ module-whatis "Síntese de controladores descritos em burst-mode (BM e XBM)"
 # Binaries
 prepend-path PATH "${BASE}/3D-src"
 
-# Simple user information
+# User information
 if { [ module-info mode load ] } {
     puts stderr "\n\t${MODULE} ${VERSION} module was loaded\n"
 }
@@ -21,4 +21,3 @@ if { [ module-info mode load ] } {
 if { [ module-info mode remove ] } {
     puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
 }
-
