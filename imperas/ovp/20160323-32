@@ -1,5 +1,6 @@
 #%Module1.0
-# Created by MADALOZZO
+
+# Created by Guilherme Madalozzo
 
 # Local variables
 set MODULE "OVP Simulator"
@@ -34,7 +35,7 @@ prepend-path PATH "$BASE/lib/$ARCH/gdb"
 prepend-path LD_LIBRARY_PATH "$BASE/bin/$ARCH"
 prepend-path LD_LIBRARY_PATH "$BASE/lib/$ARCH/External/lib"
 
-# Module info 
+# Module info
 module-whatis "Ferramenta de simulação de processadores OVP - 32 bits"
 
 # User feedback on module load
@@ -42,7 +43,7 @@ if { [ module-info mode load ] } {
 	module load systemc/2.3.1
 	puts stderr "\t${MODULE} ${VERSION} (using ${RUNTIME}) module was loaded - 32bits version\n"
 	puts stderr "\t#> PARA COMPLETAR EXECUTE:\n"
-	puts stderr "\tsource $BASE/bin/setup.sh" 
+	puts stderr "\tsource $BASE/bin/setup.sh"
 	puts stderr "\tsetupImperas -m32 $BASE\n"
 }
 

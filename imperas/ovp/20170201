@@ -1,5 +1,7 @@
 #%Module1.0
 
+## Created by Leandro Heck
+
 # Local variables
 set MODULE "OVP Simulator"
 set VERSION "20170201"
@@ -36,7 +38,7 @@ prepend-path PATH "$BASE/lib/$ARCH/gdb"
 append-path LD_LIBRARY_PATH "$BASE/bin/$ARCH"
 append-path LD_LIBRARY_PATH "$BASE/lib/$ARCH/External/lib"
 
-# Module info 
+# Module info
 module-whatis "Ferramenta de simulação de processadores OVP"
 
 # User feedback on module load
@@ -44,7 +46,7 @@ if { [ module-info mode load ] } {
 	module load systemc/2.3.1
 	puts stderr "\t${MODULE} ${VERSION} (using ${RUNTIME}) module was loaded\n"
 	puts stderr "\t#> PARA COMPLETAR EXECUTE:\n"
-	puts stderr "\tsource $BASE/bin/setup.sh" 
+	puts stderr "\tsource $BASE/bin/setup.sh"
 	puts stderr "\tsetupImperas $BASE\n"
 }
 

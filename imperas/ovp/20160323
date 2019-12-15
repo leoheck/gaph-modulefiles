@@ -1,6 +1,6 @@
 #%Module1.0
-# Estragado by MADALOZZO
-# Arrumado por LHeck
+
+# Created by Leandro Heck
 
 # Local variables
 set MODULE "OVP Simulator"
@@ -25,7 +25,6 @@ setenv IMPERAS_ISS "${BASE}/bin/Linux64/iss.exe"
 
 # Cross compiler variables
 setenv MIPS_TOOLCHAIN_ROOT "$BASE/lib/$ARCH/CrossCompiler/mips-elf"
-#setenv  ARM_TOOLCHAIN_ROOT "$BASE/lib/$ARCH/CrossCompiler/arm-elf"
 
 # Binaries
 prepend-path PATH "$BASE/bin/$ARCH"
@@ -33,8 +32,6 @@ prepend-path PATH "$BASE/lib/$ARCH/CrossCompiler/mips-elf/bin"
 prepend-path PATH "$BASE/lib/$ARCH/gdb"
 
 # Libraries
-# [LHECK] Precisei usar append para nao estragar o TCL que estraga os sistema de modulos
-# [LHECK] TODO: Ver o que esta acontecendo..
 append-path LD_LIBRARY_PATH "$BASE/bin/$ARCH"
 append-path LD_LIBRARY_PATH "$BASE/lib/$ARCH/External/lib"
 

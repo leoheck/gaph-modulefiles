@@ -1,5 +1,6 @@
 #%Module1.0
-# Created by LHECK
+
+# Created by Leandro Heck
 
 # Local variables
 set MODULE "OVP Simulator"
