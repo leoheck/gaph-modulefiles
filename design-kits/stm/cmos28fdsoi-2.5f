@@ -1,7 +1,7 @@
 #%Module1.0
 
-# Criado por Leandro Heck
-# Teste para carregamento de ferramentas do design kit
+# Testing loading design-kit with environment modules
+# Created by Leandro Heck
 
 # Local variables
 set MODULE "Design Kit"
@@ -31,7 +31,7 @@ set required_tools "
 \tads for Momentum : 2012.08
 \tgoldengate       : 4.8.3"
 
-# Simple user information
+# User information
 if { [ module-info mode load ] } {
 	puts stderr "\n\t${required_tools}\n"
 	module load ic/6.1.6
@@ -49,4 +49,3 @@ if { [ module-info mode load ] } {
 if { [ module-info mode remove ] } {
 	puts stderr "\n\t${MODULE} ${VERSION} module was removed\n"
 }
-
